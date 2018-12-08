@@ -1,5 +1,5 @@
-# Bookstore
-SpringBoot2+Angular7
+# Bookstore-SpringBoot2-Angular7
+
 
 Java web application includes RESTful API using SpringBoot, Spring Security, Spring Session, Spring Data with Redis DB and a front end in Angular7.
 
