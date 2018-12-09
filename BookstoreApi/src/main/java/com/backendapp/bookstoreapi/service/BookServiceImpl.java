@@ -18,10 +18,6 @@ public class BookServiceImpl implements BookService{
 	public Book findById(Long id) {
 		return bookDAO.findById(id);
 	}
-	
-	public List<Book> findByName(String name) {
-		return bookDAO.findByName(name);
-	}
 	public List<Book> findByAuthor(String author) {
 		return bookDAO.findByAuthor(author);
 	}
@@ -54,7 +50,7 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public List<Book> findByTitle(String title) {
 		// TODO Auto-generated method stub
-		List<Book> bookList = bookDAO.findByTitleContaining(title);
+		List<Book> bookList = bookDAO.findByTitle(title);
 		List<Book> activeBookList = new ArrayList<Book>();
 		
 		for (Book book : bookList) {

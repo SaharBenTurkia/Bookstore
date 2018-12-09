@@ -30,8 +30,8 @@ public class BookController {
 		return service.findAll();
 	}
 	
-	@RequestMapping(path="/{name}")
-	public List<Book> getBookByName(@PathVariable("name") String name) {
-		return service.findByName(name);
+	@RequestMapping(path="/{title}")
+	public List<Book> getBookByName(@PathVariable("title") String title) {
+		return service.findByTitle(title);
 	}
 }
