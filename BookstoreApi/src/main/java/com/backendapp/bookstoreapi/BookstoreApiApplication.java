@@ -9,9 +9,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.backendapp.bookstoreapi.config.SecurityUtility;
-import com.backendapp.bookstoreapi.domain.User;
-import com.backendapp.bookstoreapi.domain.security.Role;
-import com.backendapp.bookstoreapi.domain.security.UserRole;
+import com.backendapp.bookstoreapi.model.User;
+import com.backendapp.bookstoreapi.model.security.Role;
+import com.backendapp.bookstoreapi.model.security.UserRole;
 import com.backendapp.bookstoreapi.service.UserService;
 
 @SpringBootApplication

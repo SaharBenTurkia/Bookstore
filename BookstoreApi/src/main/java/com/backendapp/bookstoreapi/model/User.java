@@ -1,4 +1,4 @@
-package com.backendapp.bookstoreapi.domain;
+package com.backendapp.bookstoreapi.model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -18,8 +18,8 @@ import javax.persistence.OneToMany;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.backendapp.bookstoreapi.domain.security.Authority;
-import com.backendapp.bookstoreapi.domain.security.UserRole;
+import com.backendapp.bookstoreapi.model.security.Authority;
+import com.backendapp.bookstoreapi.model.security.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity

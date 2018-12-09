@@ -1,5 +1,6 @@
 package com.backendapp.bookstoreapi.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,39 @@ public class BookServiceImpl implements BookService{
 	@Override
 	public List<Book> findAll() {
 		// TODO Auto-generated method stub
-		return bookDAO.findAll();
+		List<Book> bookList = bookDAO.findAll();
+		List<Book> activeBookList = new ArrayList<Book>();
+		
+		for (Book book : bookList) {
+			if (book.isActive()) {
+				activeBookList.add(book);
+			}
+		}
+		return activeBookList;
+	}
+
+	public Book save(Book book) {
+		// TODO Auto-generated method stub
+		return bookDAO.save(book);
+	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		bookDAO.delete(id);
+	}
+
+	@Override
+	public List<Book> findByTitle(String title) {
+		// TODO Auto-generated method stub
+		List<Book> bookList = bookDAO.findByTitleContaining(title);
+		List<Book> activeBookList = new ArrayList<Book>();
+		
+		for (Book book : bookList) {
+			if (book.isActive()) {
+				activeBookList.add(book);
+			}
+		}
+		return activeBookList;
 	}
 }

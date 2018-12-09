@@ -18,4 +18,10 @@ public interface BookService {
 	public List<Book> findByName(String name);
 	
 	public List<Book> findByAuthor(String author);
+	
+	List<Book> findByTitle(String title);
+	
+	void delete(Long id);
+	
+	Book save(Book book);
 }

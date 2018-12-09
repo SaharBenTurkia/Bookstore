@@ -1,4 +1,4 @@
-package com.backendapp.bookstoreapi.domain.security;
+package com.backendapp.bookstoreapi.model.security;
 
 import java.io.Serializable;
 
@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.backendapp.bookstoreapi.domain.User;
+import com.backendapp.bookstoreapi.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity

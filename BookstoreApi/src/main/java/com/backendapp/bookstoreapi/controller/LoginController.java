@@ -1,4 +1,4 @@
-package com.backendapp.bookstoreapi.ressource;
+package com.backendapp.bookstoreapi.controller;
 
 import java.util.Collections;
 import java.util.Map;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.backendapp.bookstoreapi.service.UserService;
 
 @RestController
-public class LoginRessource {
+public class LoginController {
 
 	@Autowired
 	private UserService userService;

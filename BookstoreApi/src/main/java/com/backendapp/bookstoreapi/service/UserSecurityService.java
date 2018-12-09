@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.backendapp.bookstoreapi.domain.User;
+import com.backendapp.bookstoreapi.model.User;
 import com.backendapp.bookstoreapi.repository.UserRepository;
 
 @Service

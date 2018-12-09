@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.backendapp.bookstoreapi.domain.User;
-import com.backendapp.bookstoreapi.domain.security.UserRole;
+import com.backendapp.bookstoreapi.model.User;
+import com.backendapp.bookstoreapi.model.security.UserRole;
 import com.backendapp.bookstoreapi.repository.RoleRepository;
 import com.backendapp.bookstoreapi.repository.UserRepository;
 

@@ -1,4 +1,4 @@
-package com.backendapp.bookstoreapi.domain.security;
+package com.backendapp.bookstoreapi.model.security;
 
 import java.io.Serializable;
 
