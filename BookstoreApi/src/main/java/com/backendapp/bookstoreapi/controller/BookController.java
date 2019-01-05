@@ -33,29 +33,30 @@ import com.backendapp.bookstoreapi.service.BookService;
 public class BookController {
 
 	private String imageName;
-	
+
 	@Autowired
 	private BookService service;
-	
-	@RequestMapping(value="/add", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public Book addBook(@RequestBody Book book) {
 		return service.save(book);
 	}
-	
-	@RequestMapping(value="/add/image", method=RequestMethod.POST)
-	public ResponseEntity upload(@RequestParam("id") Long id,
-			HttpServletResponse response, HttpServletRequest request) {
+
+	@RequestMapping(value = "/add/image", method = RequestMethod.POST)
+	public ResponseEntity upload(@RequestParam("id") Long id, HttpServletResponse response,
+			HttpServletRequest request) {
 		try {
 			Book book = service.findById(id);
 			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 			Iterator<String> it = multipartRequest.getFileNames();
 			MultipartFile multipartFile = multipartRequest.getFile(it.next());
-			
-			String fileName = id+".png";
+
+			String fileName = id + ".png";
 			imageName = fileName;
-			
+
 			byte[] bytes = multipartFile.getBytes();
-			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File("src/main/resources/static/image/book/"+fileName)));
+			BufferedOutputStream stream = new BufferedOutputStream(
+					new FileOutputStream(new File("src/main/resources/static/image/book/" + fileName)));
 			stream.write(bytes);
 			stream.close();
 			return new ResponseEntity("upload success!", HttpStatus.OK);
@@ -64,24 +65,25 @@ public class BookController {
 		}
 		return new ResponseEntity("upload failed!", HttpStatus.BAD_REQUEST);
 	}
-	
-	@RequestMapping(value="/update/image", method=RequestMethod.POST)
-	public ResponseEntity updateImagePost(@RequestParam("id") Long id,
-			HttpServletResponse response, HttpServletRequest request) {
+
+	@RequestMapping(value = "/update/image", method = RequestMethod.POST)
+	public ResponseEntity updateImagePost(@RequestParam("id") Long id, HttpServletResponse response,
+			HttpServletRequest request) {
 		try {
 			Book book = service.findById(id);
 			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 			Iterator<String> it = multipartRequest.getFileNames();
 			MultipartFile multipartFile = multipartRequest.getFile(it.next());
-			
-			String fileName = id+".png";
+
+			String fileName = id + ".png";
 			imageName = fileName;
-			
-			if (Paths.get("src/main/resources/static/image/book/"+fileName) != null)
-			Files.delete(Paths.get("src/main/resources/static/image/book/"+fileName));
-			
+
+			if (Paths.get("src/main/resources/static/image/book/" + fileName) != null)
+				Files.delete(Paths.get("src/main/resources/static/image/book/" + fileName));
+
 			byte[] bytes = multipartFile.getBytes();
-			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File("src/main/resources/static/image/book/"+fileName)));
+			BufferedOutputStream stream = new BufferedOutputStream(
+					new FileOutputStream(new File("src/main/resources/static/image/book/" + fileName)));
 			stream.write(bytes);
 			stream.close();
 			return new ResponseEntity("upload success!", HttpStatus.OK);
@@ -90,32 +92,33 @@ public class BookController {
 		}
 		return new ResponseEntity("upload failed!", HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@RequestMapping("/bookList")
 	public List<Book> getBookList() {
 		return service.findAll();
 	}
-	
+
 	@GetMapping("/getBooks")
 	public List<Book> getBooks() {
 		return service.findAll();
 	}
-	@RequestMapping(value="/update", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public Book updateBookPost(@RequestBody Book book) {
 		return service.save(book);
 	}
-	
-	@RequestMapping(value="/remove", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	public ResponseEntity remove(@RequestBody String id) throws IOException {
 		service.delete(Long.parseLong(id));
-		
-		String fileName = id+".png";
-		Files.delete(Paths.get("src/main/resources/static/image/book/"+fileName));
-		
+
+		String fileName = id + ".png";
+		Files.delete(Paths.get("src/main/resources/static/image/book/" + fileName));
+
 		return new ResponseEntity("remove success!", HttpStatus.OK);
 	}
-	
-	@RequestMapping(path="/{id}")
+
+	@RequestMapping(path = "/{id}")
 	public Book getBook(@PathVariable("id") Long id) {
 		return service.findById(id);
 	}
